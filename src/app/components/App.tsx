@@ -15,16 +15,16 @@ function App() {
   }, []);
 
   return (
-    <div className="w-full p-4 border border-gray-200 rounded-md">
+    <div className="w-full p-4">
       <Tabs defaultValue="components" className="w-full">
-        <TabsList>
-          <TabsTrigger value="components" className="w-1/3">
+        <TabsList className="flex w-full">
+          <TabsTrigger value="components" className="w-full">
             Components
           </TabsTrigger>
-          <TabsTrigger value="icons" className="w-1/3">
+          <TabsTrigger value="icons" className="w-full">
             Icons
           </TabsTrigger>
-          <TabsTrigger value="settings" className="w-1/3">
+          <TabsTrigger value="settings" className="w-full">
             Settings
           </TabsTrigger>
         </TabsList>
