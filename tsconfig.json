@@ -11,5 +11,9 @@
     "noImplicitAny": false,
     "moduleResolution": "node",
     "typeRoots": ["./node_modules/@types", "./node_modules/@figma"]
+  },
+  "baseUrl": ".",
+  "paths": {
+    "@/*": ["./src/*"]
   }
 }

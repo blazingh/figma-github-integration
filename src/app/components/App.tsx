@@ -1,24 +1,9 @@
 import React from 'react';
-import logo from '../assets/logo.svg';
-import '../styles/ui.css';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from './tabs';
+
+import '../styles/style.css';
 
 function App() {
-  const textbox = React.useRef<HTMLInputElement>(undefined);
-
-  const countRef = React.useCallback((element: HTMLInputElement) => {
-    if (element) element.value = '5';
-    textbox.current = element;
-  }, []);
-
-  const onCreate = () => {
-    const count = parseInt(textbox.current.value, 10);
-    parent.postMessage({ pluginMessage: { type: 'create-rectangles', count } }, '*');
-  };
-
-  const onCancel = () => {
-    parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*');
-  };
-
   React.useEffect(() => {
     // This is how we read messages sent from the plugin controller
     window.onmessage = (event) => {
@@ -30,16 +15,24 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <img src={logo} />
-      <h2>Rectangle Creator</h2>
-      <p>
-        Count: <input ref={countRef} />
-      </p>
-      <button id="create" onClick={onCreate}>
-        Create
-      </button>
-      <button onClick={onCancel}>Cancel</button>
+    <div className="w-full p-4 border border-gray-200 rounded-md">
+      <Tabs defaultValue="components" className="w-full">
+        <TabsList>
+          <TabsTrigger value="components" className="w-1/3">
+            Components
+          </TabsTrigger>
+          <TabsTrigger value="icons" className="w-1/3">
+            Icons
+          </TabsTrigger>
+          <TabsTrigger value="settings" className="w-1/3">
+            Settings
+          </TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="components"> Components </TabsContent>
+        <TabsContent value="icons"> Icons </TabsContent>
+        <TabsContent value="settings"> Settings </TabsContent>
+      </Tabs>
     </div>
   );
 }
